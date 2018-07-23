@@ -176,7 +176,12 @@ function flipCard(card) {
                         selectedCardsValues = [];
 
                         // check if the user won the game
-                        // Add code from Part 2.6 here
+                        if (cardsFlipped == gameBoardSize) {
+                            setTimeout(function () {
+                                output = "<div id=\"playAgain\"><p>You Win!</p><input type=\"button\" onClick=\"location.reload()\" value=\"Play Again\" class=\"btn\" /></div>";
+                                $("#game-board").html(output);
+                            }, 1000);
+                        }
 
                     }
                     else {
