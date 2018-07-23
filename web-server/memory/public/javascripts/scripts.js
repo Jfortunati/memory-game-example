@@ -33,6 +33,11 @@ function newGame() {
     cardsFlipped = 0;
 
     // Add code from Part 2.2 here
+    // extract game size selection from user
+    var size = $("#selectGameSize").val();
+
+    // parse game size value
+    size = parseInt(size, 10);
 
 
     // check if this is a valid selection
