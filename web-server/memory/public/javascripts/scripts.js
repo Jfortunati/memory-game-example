@@ -135,17 +135,17 @@ function flipCard(card) {
             selectedCards.push(card.id);
 
             // post this guess to the server and get this card's value
-            // $.ajax({
-            //     url: "http://localhost:8000/guess?card=" + selectedCards[0],
-            //     type: 'PUT',
-            //     success: function (response) {
-            //         // display first card value
-            //         $("#" + selectedCards[0] + " .back").html(lookUpGlyphicon(response[0].value));
+            $.ajax({
+                url: "http://localhost:8000/guess?card=" + selectedCards[0],
+                type: 'PUT',
+                success: function (response) {
+                    // display first card value
+                    $("#" + selectedCards[0] + " .back").html(lookUpGlyphicon(response[0].value));
 
-            //         // store the first card value
-            //         selectedCardsValues.push(response[0].value);
-            //     }
-            // });
+                    // store the first card value
+                    selectedCardsValues.push(response[0].value);
+                }
+            });
         }
         else if (selectedCards.length == 1) {
             // store the second card selection
