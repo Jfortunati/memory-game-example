@@ -66,7 +66,18 @@ function newGame() {
 }
 
 function restoreGame() {
-	// Add code from Part 2.3 here
+	// reset the game
+    gameBoardSize = 0;
+    cardsFlipped = 0;
+
+    // fetch the game state from the server 
+    $.get("http://localhost:8000/game", function (response) {
+        // store game board size
+        gameBoardSize = response.length;
+
+        // draw the game board
+        drawGameBoard(response);
+    });
 }
 
 function drawGameBoard(board) {
