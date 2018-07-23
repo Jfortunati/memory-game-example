@@ -81,7 +81,41 @@ function restoreGame() {
 }
 
 function drawGameBoard(board) {
-	// Add code from Part 2.5
+    // create output
+    var output = "";
+    // detect board size CSS class
+    var css = "";
+    switch (board.length / 4) {
+        case 1:
+            css = "rows1";
+            break;
+        case 2:
+            css = "rows2";
+            break;
+        case 3:
+            css = "rows3";
+            break;
+        case 4:
+            css = "rows4";
+            break;   
+    }
+    // generate HTML for each card and append to the output
+    for (var i = 0; i < board.length; i++) {
+        if (board[i].cleared == "true") {
+            // if the card has been cleared apply the .flip class
+            output += "<div class=\"flipContainer col-xs-3 " + css + "\"><div class=\"cards flip matched\" id=\"" + i + "\" onClick=\"flipCard(this)\">\
+                <div class=\"front\"><span class=\"glyphicon glyphicon-question-sign\"></span></div>\
+                <div class=\"back\">" + lookUpGlyphicon(board[i].value) + "</div>\
+                </div></div>";
+        } else {
+            output += "<div class=\"flipContainer col-xs-3 " + css + "\"><div class=\"cards\" id=\"" + i + "\" onClick=\"flipCard(this)\">\
+                <div class=\"front\"><span class=\"glyphicon glyphicon-question-sign\"></span></div>\
+                <div class=\"back\"></div>\
+                </div></div>";
+        }
+    }
+    // place the output on the page
+    $("#game-board").html(output);
 }
 
 function flipCard(card) {
