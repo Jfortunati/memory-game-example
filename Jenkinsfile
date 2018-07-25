@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        bat(returnStdout: true, script: 'C:\\Jenkins-Workspaces\\test.bat')
+        bat(returnStdout: true, script: 'C:\\Jenkins-Workspaces\\text.bat')
       }
     }
   }
