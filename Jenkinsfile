@@ -1,8 +1,8 @@
 pipeline {
   agent {
     node {
-      label 'master'
       customWorkspace 'C:\\Jenkins-Workspaces\\memory-game-example'
+      label 'Master'
     }
 
   }
