@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'ESXI-AL-CI-Workspace'
+      label 'master'
     }
 
   }
