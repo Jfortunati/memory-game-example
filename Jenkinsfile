@@ -13,6 +13,6 @@ pipeline {
     }
   }
   environment {
-    c_drive = 'C:\\Jenkins-Workspaces\\memory-game-example'
+    customWorkspace = 'C:\\Jenkins-Workspaces\\memory-game-example'
   }
 }
