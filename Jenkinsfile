@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'echo "this is a test" >> made_by_jenkins.txt'
+        bat(returnStdout: true, script: 'C:\\Jenkins-Workspaces\\test.bat')
       }
     }
   }
