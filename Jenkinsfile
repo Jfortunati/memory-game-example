@@ -2,7 +2,7 @@ pipeline {
   agent {
     node {
       customWorkspace 'C:\\Jenkins-Workspaces\\memory-game-example'
-      label 'demo'
+      label 'ESXI-AL-CI'
     }
 
   }
