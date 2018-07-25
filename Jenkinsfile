@@ -2,6 +2,7 @@ pipeline {
   agent {
     node {
       label 'master'
+      customWorkspace 'C:\\Jenkins-Workspaces\\memory-game-example'
     }
 
   }
@@ -11,8 +12,5 @@ pipeline {
         sh 'echo "this is a test" >> made_by_jenkins.txt'
       }
     }
-  }
-  environment {
-    customWorkspace = 'C:\\Jenkins-Workspaces\\memory-game-example'
   }
 }
