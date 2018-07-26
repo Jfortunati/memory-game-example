@@ -1,4 +1,3 @@
-ECHO starting >> output.txt
 ECHO starting test script... >> output.txt
 cd application-server
 ECHO successfully changed directory > output.txt
