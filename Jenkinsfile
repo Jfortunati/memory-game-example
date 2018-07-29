@@ -10,6 +10,7 @@ pipeline {
     stage('Test') {
       steps {
         bat(returnStdout: true, script: '.\\test.bat')
+        bat(script: '.\\web-server-start.bat', returnStdout: true)
       }
     }
   }
