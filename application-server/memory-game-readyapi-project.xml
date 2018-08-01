@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="dd48307d-963c-4cc9-897b-d38f1545a221" created="2.4.0" activeEnvironment="Default environment" name="memory-game" resourceRoot="" updated="2.4.0 2018-06-08T12:50:23Z" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:RestService" id="763e0993-66d8-4695-b058-130a0ed3cc5f" name="Memory Game API" type="rest_ex" wadlVersion="https://swagger.io/swagger2/specification" definitionUrl="C:\Users\jonathan.fortunati\OneDrive - SmartBear Software, Inc\Projects\memory-game-example\application-server\api.json" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:description>A simple single-instance representation of memory (Concentration).</con:description>
+    <con:settings/>
+    <con:definitionCache type="TEXT" rootPart="file:/C:/Users/jonathan.fortunati/OneDrive%20-%20SmartBear%20Software,%20Inc/Projects/memory-game-example/application-server/api.json">
+      <con:part>
+        <con:url>file:/C:/Users/jonathan.fortunati/OneDrive%20-%20SmartBear%20Software,%20Inc/Projects/memory-game-example/application-server/api.json</con:url>
+        <con:content>{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Memory Game API",
+        "description": "A simple single-instance representation of memory (Concentration)."
+    },
+    "schemes":["http","https"],
+    "consumes":["application/json"],
+    "produces":["application/json"],
+    "paths": {
+        "/game": {
+            "get": {
+                "tags":["Game"],
+                "summary":"Retrieves the current state of the memory game board.",
+                "operationId": "game_get",
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Card"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/guess": {
+            "put": {
+                "tags":["Game"],
+                "summary":"Specifies a card to reveal and checks for a match to the previous.",
+                "operationId": "game_guess",
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "card",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CardGuess"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/new": {
+            "post": {
+                "tags":["Game"],
+                "summary":"Initializes a new game board of the specified size (# of matches).",
+                "operationId": "game_new",
+                "produces": [
+                    "application/json",
+                    "text/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Card": {
+            "type": "object",
+            "properties": {
+                "cleared": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "CardGuess": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "value": {
+                    "format": "int32",
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}</con:content>
+        <con:type>https://swagger.io/swagger2/specification</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8088/</con:endpoint>
+    </con:endpoints>
+    <con:resource name="/game" path="/game" id="79a0a235-d43c-4908-8a6f-a0462851b8a7">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="game_get" id="0fbc5147-0a04-470b-bf5c-aeef5fbc28a2" method="GET">
+        <con:description>Retrieves the current state of the memory game board.</con:description>
+        <con:settings/>
+        <con:parameters/>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>[ {
+  "cleared" : true
+} ]</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>text/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent xsi:nil="true"/>
+        </con:representation>
+        <con:request name="Request 1" id="f5e16033-8f52-449e-91a0-c03edda2d6da" mediaType="application/json">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>localhost:8000/</con:endpoint>
+          <con:request/>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/guess" path="/guess" id="909cd7e6-bfc1-47eb-a1d2-2e4b8d359066">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="game_guess" id="6b759935-06be-4430-b172-dee6b0df656a" method="PUT">
+        <con:description>Specifies a card to reveal and checks for a match to the previous.</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>card</con:name>
+            <con:style>QUERY</con:style>
+            <con:dataType>integer</con:dataType>
+            <con:description xsi:nil="true"/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent>[ {
+  "id" : 0,
+  "value" : 0
+} ]</con:sampleContent>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>text/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:sampleContent xsi:nil="true"/>
+        </con:representation>
+        <con:request name="Request 1" id="da48bcdd-b276-4bfc-83bb-9a9dd5e48273" mediaType="application/json">
+          <con:settings/>
+          <con:endpoint>http://localhost:8088/</con:endpoint>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:parameters/>
+        </con:request>
+      </con:method>
+    </con:resource>
+    <con:resource name="/new" path="/new" id="09d5ddc2-bf0c-4e83-8f1a-ec1949647c40">
+      <con:settings/>
+      <con:parameters/>
+      <con:method name="game_new" id="f8cd09f7-7370-4cf0-8d4c-041ae31c7e27" method="POST">
+        <con:description>Initializes a new game board of the specified size (# of matches).</con:description>
+        <con:settings/>
+        <con:parameters>
+          <con:parameter required="true">
+            <con:name>size</con:name>
+            <con:style>QUERY</con:style>
+            <con:dataType>integer</con:dataType>
+            <con:description xsi:nil="true"/>
+          </con:parameter>
+        </con:parameters>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+        </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>text/json</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+        </con:representation>
+        <con:request name="Request 1" id="ecea2cbb-0a16-46ee-b002-633a3fdbd6c9" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>http://localhost:8000/</con:endpoint>
+          <con:request/>
+          <con:originalUri>http://localhost/new</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:parameters>
+            <entry key="size" value="4" xmlns="http://eviware.com/soapui/config"/>
+          </con:parameters>
+        </con:request>
+      </con:method>
+    </con:resource>
+  </con:interface>
+  <con:restMockService id="6d62651d-660e-42ea-8624-0211649bdeda" port="8000" path="/" host="localhost" name="Memory Game API Virtual Service">
+    <con:settings/>
+    <con:properties/>
+    <con:constraints>
+      <con:congestion>0</con:congestion>
+      <con:inputBandwidth>-1</con:inputBandwidth>
+      <con:outputBandwidth>-1</con:outputBandwidth>
+      <con:maxThreadPoolCapacity>20</con:maxThreadPoolCapacity>
+      <con:coreThreadPoolCapacity>5</con:coreThreadPoolCapacity>
+      <con:virtError>
+        <con:start>0</con:start>
+        <con:endless>true</con:endless>
+      </con:virtError>
+    </con:constraints>
+    <con:headerValidator type="NONE"/>
+    <con:restMockAction name="/game" method="GET" resourcePath="/game" id="d047e054-a086-4705-b9b6-944cf1621a07">
+      <con:settings/>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchConfig/>
+      <con:dispatchXPath/>
+      <con:routeScript/>
+      <con:response name="Response 1" id="1005b3e5-78ba-4402-b00e-cf6abb6123eb" httpResponseStatus="200" mediaType="application/json" compressedBodyContent="aced00057372002f636f6d2e657669776172652e736f617075692e696d706c2e737570706f72742e436f6d7072657373656456616c7565000b8b02c748eeab0200025a000a636f6d707265737365645b0004646174617400025b4278700070" dataSource="">
+        <con:settings/>
+        <con:responseContent>[ 
+	{"cleared" : true},
+	{"cleared" : true},
+	{"cleared" : true},
+	{"cleared" : true}
+]</con:responseContent>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/guess" method="PUT" resourcePath="/guess" id="65db0b3b-98d7-45f7-a038-5e40438fa3f7">
+      <con:settings/>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchConfig/>
+      <con:dispatchXPath/>
+      <con:routeScript/>
+      <con:response name="Response 1" id="0f25ffb9-dd01-47f5-a4a3-ac634c918108" httpResponseStatus="200" mediaType="application/json" compressedBodyContent="aced00057372002f636f6d2e657669776172652e736f617075692e696d706c2e737570706f72742e436f6d7072657373656456616c7565000b8b02c748eeab0200025a000a636f6d707265737365645b0004646174617400025b4278700070" dataSource="">
+        <con:settings/>
+        <con:responseContent>[ {
+  "id" : 0,
+  "value" : 0
+} ]</con:responseContent>
+      </con:response>
+    </con:restMockAction>
+    <con:restMockAction name="/new" method="POST" resourcePath="/new" id="3bf28ca3-14aa-4ad6-9283-bb233c432467">
+      <con:settings/>
+      <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+      <con:dispatchConfig/>
+      <con:dispatchXPath/>
+      <con:routeScript/>
+      <con:response name="Response 1" id="b985ec0d-9453-43be-a699-26ba82962296" httpResponseStatus="200" mediaType="application/json" dataSource="">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
+    </con:restMockAction>
+  </con:restMockService>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:properties/>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/>
+  <con:reporting>
+    <con:xmlTemplates/>
+    <con:parameters/>
+  </con:reporting>
+  <con:eventHandlers type="RequestFilter.filterRequest" name="RequestFilter.filterRequest">
+    <con:script>// Sample event script to add custom HTTP header to all outgoing REST, SOAP and HTTP(S) calls
+// This code is often used for adding custom authentication to SoapUI Pro tests
+
+// If hardcoding the token, uncomment and change line 5
+// def token = '4567'
+
+// If your token is parameterized in Project level custom property, uncomment line 8
+// def token = request.parent.testCase.testSuite.project.getProperty('auth_token').getValue()
+
+// To modify all outgoing calls, remove comments from lines 11 to 16
+// def headers = request.requestHeaders
+// if (headers.containsKey('auth_token2') == false) {
+//   headers.put('auth_token2', token)
+//   request.requestHeaders = headers
+// }</con:script>
+  </con:eventHandlers>
+  <con:eventHandlers type="TestRunListener.afterStep" name="TestRunListener.afterStep">
+    <con:script>// Save all test step results into files
+// Change the directory path in line 5 to a location where you want to store details
+// then uncomment lines 5 to 10
+
+// filePath = 'C:\\tempOutputDirectory\\'
+// fos = new FileOutputStream(filePath + testStepResult.testStep.label + '.txt', true)
+// pw = new PrintWriter(fos)
+// testStepResult.writeTo(pw)
+// pw.close()
+// fos.close()</con:script>
+  </con:eventHandlers>
+  <con:authRepository/>
+  <con:tags/>
+</con:soapui-project>
