@@ -279,6 +279,10 @@
 	{"cleared" : true}
 ]</con:responseContent>
       </con:response>
+      <con:response name="Response 2" id="c3d27e26-6e72-4a2a-93f3-d6103b382b03" httpResponseStatus="200">
+        <con:settings/>
+        <con:responseContent/>
+      </con:response>
     </con:restMockAction>
     <con:restMockAction name="/guess" method="PUT" resourcePath="/guess" id="65db0b3b-98d7-45f7-a038-5e40438fa3f7">
       <con:settings/>
